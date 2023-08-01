@@ -1,25 +1,24 @@
 import {generateString} from "../../src/functions/generate-string";
-import {PostInputModel} from "../../src/models/posts-models";
+import {PostInputModel, PostInputModelWithoutBlogId} from "../../src/models/posts-models";
 import {ErrorType} from "../../src/types/errors-massages-types";
 
 
-export const correctBodyPost: PostInputModel = {
+
+export const correctBodyPost: PostInputModelWithoutBlogId = {
     title: "Title",
     shortDescription: "ShortDescription",
     content: "Content",
-    blogId: "BlogId"
 }
-export const updatedCorrectBodyPost: PostInputModel = {
+export const updatedCorrectBodyPost: PostInputModelWithoutBlogId = {
     title: "NewTitle",
     shortDescription: "NewShortDescription",
-    content: "NewContent",
-    blogId: "NewBlogId"
+    content: "NewContent"
 }
 export const incorrectBodyPost: PostInputModel = {
     title: generateString(31),
     shortDescription: generateString(101),
     content: generateString(1001),
-    blogId: ""
+    blogId: "Invalid"
 }
 export const undefinedBodyPost: PostInputModel = {
     title: "",
@@ -32,7 +31,7 @@ export const errorsIncorrectInputPost: ErrorType = {
         {message: 'Title length should be below 30 symbols', field: 'title'},
         {message: 'ShortDescription length should be below 100 symbols', field: 'shortDescription'},
         {message: 'Content should be be below 1000 symbols', field: 'content'},
-        {message: 'BlogId is required', field: 'blogId'}
+        {message: 'Blog not found', field: 'blogId'}
     ]
 }
 export const errorsUndefinedInputPost: ErrorType = {
@@ -43,3 +42,5 @@ export const errorsUndefinedInputPost: ErrorType = {
         {message: 'BlogId is required', field: 'blogId'}
     ]
 }
+
+export const incorrectLogin: string = "Basic admin:qwerty"
